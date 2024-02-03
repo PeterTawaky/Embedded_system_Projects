@@ -1,14 +1,14 @@
 /*
-************************************************************************************
-*	@File_Name	: Calculator.c
-*	@Version  	: 1.0.0
-*	@Brief    	: doing mathematical calculations
-*	@Details  	: password
-*	@Date     	: 2 / 2 / 2024
-*	@Copyright	: Feel Free to Fork at Any Time
-*	@Author   	: Peter Tawaky
-************************************************************************************
-*/
+ ************************************************************************************
+ *	@File_Name	: Calculator.c
+ *	@Version  	: 1.0.0
+ *	@Brief    	: doing mathematical calculations
+ *	@Details  	: password
+ *	@Date     	: 2 / 2 / 2024
+ *	@Copyright	: Feel Free to Fork at Any Time
+ *	@Author   	: Peter Tawaky
+ ************************************************************************************
+ */
 
 /* ********************************* Includes Section ********************************* */
 #include <stdio.h>
@@ -24,7 +24,10 @@
 /* ******************************* Main Program Section ******************************* */
 int main(void)
 {
-    float sum;
+	long double f;
+	float sum;
+	float difference;
+	unsigned int number;
 	unsigned int numbers;
 	unsigned int flag=0;
 	char pass_entered[7];
@@ -39,17 +42,38 @@ int main(void)
 				"\n"               //                                    |
 				"==============================================="  //    |
 				"\n"               //                                    |
-				);                 //                                    |
+		);                 //                                    |
 		goto wrong_pass;           //                                    |
 
 	}
 	else                   //Program
 	{
+		printf("Please, enter the number of numbers you want to subtract: ");
+		fflush(stdin);	fflush(stdout);
+		scanf("%d",&numbers);
+		difference= subtraction(numbers);
+		pattern (difference);
+		//--------------------------------------------------------------------------
+
+		printf("Please, enter the number you want: ");
+		fflush(stdin);	fflush(stdout);
+		scanf("%d",&number);
+		f = factorial(number);
+		if(0==f)
+		{
+			printf("Mathematical Error");
+		}
+		else
+		{
+				pattern (f);
+		}
+		//--------------------------------------------------------------------------
 		printf("Please, enter the number of numbers you want to add: ");
 		fflush(stdin);	fflush(stdout);
 		scanf("%d",&numbers);
 		sum= addition(numbers);
-		printf("summation: %0.2f",sum);
+		pattern (sum);
+
 	}
 	return 0;
 }
@@ -62,5 +86,6 @@ int main(void)
 	-------------     	------------- 	-------------
 	2.Feb,2024		Peter Tawaky	Creating password checker
 	3.Feb,2024		Peter Tawaky	Creating header file & source file to the project
+	3.Feb,2024		Peter Tawaky	creating Factorial & subtraction & Pattern functions
 
-*/
+ */
