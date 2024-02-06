@@ -3,11 +3,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 #include "Helper.h"
 /* ==================================================================================== */
 
 /* **************************** Global definition Section **************************** */
 const char password[]={"Tawaky"};
+char mode[][16]={"addition","subtraction","factorial","status","number inverter","Home"};
+char alphapet='a';
+unsigned int min_limit;
+unsigned int max_limit;
 /* ==================================================================================== */
 
 /* ****************************** User Defined Functions ****************************** */
@@ -94,6 +99,50 @@ float subtraction(int numbers)
 	}
 	return diff;
 }
+/*
+ 	@Brief      : return the number status of the number
+ 	@Parameters : the number of numbers you want to know it's status
+ 	@Return		: print
+ */
+void status ( int number )
+{
+	int i;
+	printf( number > 0 ? "Positive\n" : number<0 ? "Negative\n" : "Zero\n");
+	printf( number % 2 ? "Odd\n" : "Even\n" );
+	if(number>0){
+		for(i=2;i<number;i++)
+		{
+			if( number % i == 0 )
+			{
+				printf ("not prime\n");
+				goto not_prime;
+			}
+		}
+		printf("Prime number\n");
+		not_prime:
+	}
+}
+
+/*
+ 	@Brief      : subtracting numbers
+ 	@Parameters : the number of numbers you want to subtract
+ 	@Return		: the difference
+ */
+unsigned int numberinverter(unsigned int *number)
+{
+	int numberinverted=0;
+	unsigned int count=0;
+	while(*number)
+	{
+		numberinverted = (numberinverted*10) + (*(number) % 10);
+		count++;
+		*(number) /= 10;
+	}
+	*number = numberinverted;
+
+	return count;
+}
+
 
 /*
  	@Brief      : subtracting numbers
